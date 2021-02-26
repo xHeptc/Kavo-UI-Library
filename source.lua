@@ -1585,26 +1585,34 @@ function Kavo.CreateLib(kavName, themeList)
                 keybindElement.TextColor3 = Color3.fromRGB(0, 0, 0)
                 keybindElement.TextSize = 14.000
                 keybindElement.MouseButton1Click:connect(function(e) 
-                    togName_2.Text = ". . ."
-                    local a, b = game:GetService('UserInputService').InputBegan:wait();
-                    if a.KeyCode.Name ~= "Unknown" then
-                        togName_2.Text = a.KeyCode.Name
-                        oldKey = a.KeyCode.Name;
-                    end
-                    local c = sample:Clone()
-                        c.Parent = keybindElement
-                        local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
-                        c.Position = UDim2.new(0, x, 0, y)
-                        local len, size = 0.35, nil
-                        if keybindElement.AbsoluteSize.X >= keybindElement.AbsoluteSize.Y then
-                            size = (keybindElement.AbsoluteSize.X * 1.5)
-                        else
-                            size = (keybindElement.AbsoluteSize.Y * 1.5)
+                    if not focusing then
+                        togName_2.Text = ". . ."
+                        local a, b = game:GetService('UserInputService').InputBegan:wait();
+                        if a.KeyCode.Name ~= "Unknown" then
+                            togName_2.Text = a.KeyCode.Name
+                            oldKey = a.KeyCode.Name;
                         end
-                        c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
-                        for i = 1, 10 do
-                            c.ImageTransparency = c.ImageTransparency + 0.05
-                            wait(len / 12)
+                        local c = sample:Clone()
+                            c.Parent = keybindElement
+                            local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+                            c.Position = UDim2.new(0, x, 0, y)
+                            local len, size = 0.35, nil
+                            if keybindElement.AbsoluteSize.X >= keybindElement.AbsoluteSize.Y then
+                                size = (keybindElement.AbsoluteSize.X * 1.5)
+                            else
+                                size = (keybindElement.AbsoluteSize.Y * 1.5)
+                            end
+                            c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+                            for i = 1, 10 do
+                                c.ImageTransparency = c.ImageTransparency + 0.05
+                                wait(len / 12)
+                            end
+                        else
+                            for i,v in next, infoContainer:GetChildren() do
+                                Utility:TweenObject(v, {Position = UDim2.new(0,0,2,0)}, 0.2)
+                                focusing = false
+                            end
+                            Utility:TweenObject(blurFrame, {BackgroundTransparency = 1}, 0.2)
                         end
                 end)
         
