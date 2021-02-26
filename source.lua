@@ -1534,7 +1534,7 @@ function Kavo.CreateLib(kavName, themeList)
                 local infBtn = viewInfo
 
                 local moreInfo = Instance.new("TextLabel")
-                local UICorner = Instance.new("UICorner")
+                local UICorner1 = Instance.new("UICorner")
 
                 moreInfo.Name = "TipMore"
                 moreInfo.Parent = infoContainer
@@ -1563,8 +1563,8 @@ function Kavo.CreateLib(kavName, themeList)
                     end
                 end)        
 
-                UICorner.CornerRadius = UDim.new(0, 4)
-                UICorner.Parent = moreInfo
+                UICorner1.CornerRadius = UDim.new(0, 4)
+                UICorner1.Parent = moreInfo
 
                 if themeList.SchemeColor == Color3.fromRGB(255,255,255) then
                     Utility:TweenObject(moreInfo, {TextColor3 = Color3.fromRGB(0,0,0)}, 0.2)
@@ -1572,7 +1572,7 @@ function Kavo.CreateLib(kavName, themeList)
                 if themeList.SchemeColor == Color3.fromRGB(0,0,0) then
                     Utility:TweenObject(moreInfo, {TextColor3 = Color3.fromRGB(255,255,255)}, 0.2)
                 end 
-
+                local sample = Sample
 
                 keybindElement.Name = "keybindElement"
                 keybindElement.Parent = sectionInners
