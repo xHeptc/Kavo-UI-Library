@@ -839,6 +839,7 @@ function Kavo.CreateLib(kavName, themeList)
                     tname = tname or "Toggle"
                     nTip = nTip or "Prints Current Toggle State"
                     callback = callback or function() end
+                    local toggled = false
 
                     local toggleElement = Instance.new("TextButton")
                     local UICorner = Instance.new("UICorner")
@@ -951,7 +952,6 @@ function Kavo.CreateLib(kavName, themeList)
 
                     updateSectionFrame()
 
-                    local toggled = false
 
                     btn.MouseButton1Click:Connect(function()
                         if not focusing then
@@ -1260,7 +1260,7 @@ function Kavo.CreateLib(kavName, themeList)
                 local dropFrame = Instance.new("Frame")
                 local dropOpen = Instance.new("TextButton")
                 local listImg = Instance.new("ImageLabel")
-                local itemTextbox = Instance.new("TextBox")
+                local itemTextbox = Instance.new("TextLabel")
                 local viewInfo = Instance.new("ImageButton")
                 local UICorner = Instance.new("UICorner")
                 local UIListLayout = Instance.new("UIListLayout")
@@ -1372,8 +1372,6 @@ function Kavo.CreateLib(kavName, themeList)
                 itemTextbox.Text = dropname
                 itemTextbox.TextColor3 = themeList.TextColor
                 itemTextbox.TextSize = 14.000
-                itemTextbox.TextEditable = false
-                itemTextbox.ClearTextOnFocus = false
                 itemTextbox.TextXAlignment = Enum.TextXAlignment.Left
 
                 viewInfo.Name = "viewInfo"
