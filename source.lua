@@ -1269,6 +1269,7 @@ function Kavo.CreateLib(kavName, themeList)
             end
 
             function Elements:NewDropdown(dropname, dropinf, list, callback)
+                local DropFunction = {}
                 dropname = dropname or "Dropdown"
                 list = list or {}
                 dropinf = dropinf or "Dropdown info"
@@ -1277,7 +1278,6 @@ function Kavo.CreateLib(kavName, themeList)
                 local opened = false
                 local DropYSize = 33
 
-                local DropFunction = {}
 
                 local dropFrame = Instance.new("Frame")
                 local dropOpen = Instance.new("TextButton")
@@ -1668,7 +1668,6 @@ function Kavo.CreateLib(kavName, themeList)
                     UpdateSize()
                     UICorner_2.CornerRadius = UDim.new(0, 4)
                     UICorner_2.Parent = optionSelect
-
                 end
                 return DropFunction
             end
