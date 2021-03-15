@@ -1576,7 +1576,7 @@ function Kavo.CreateLib(kavName, themeList)
                 end
 
                 function DropFunction:Refresh(newList)
-                    newlist = newlist or {}
+                    newList = newList or {}
                     for i,v in next, dropFrame:GetChildren() do
                         if v.Name == "optionSelect" then
                             v:Destroy()
