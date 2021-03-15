@@ -1666,8 +1666,6 @@ function Kavo.CreateLib(kavName, themeList)
                     wait(0.1)
                     updateSectionFrame()
                     UpdateSize()
-                    UICorner_2.CornerRadius = UDim.new(0, 4)
-                    UICorner_2.Parent = optionSelect
                 end
                 return DropFunction
             end
