@@ -484,6 +484,7 @@ function Kavo.CreateLib(kavName, themeList)
             local Elements = {}
 
             function Elements:NewButton(bname,tipINf, callback)
+                local ButtonFunction = {}
                 tipINf = tipINf or "Tip: Clicking this nothing will happen!"
                 bname = bname or "Click Me!"
                 callback = callback or function() end
@@ -656,6 +657,10 @@ function Kavo.CreateLib(kavName, themeList)
                         viewDe = false
                     end
                 end)
+                function ButtonFunction:UpdateButton(newTitle)
+                    btnInfo.Text = newTitle
+                end
+                return ButtonFunction
             end
 
             function Elements:NewTextBox(tname, tTip, callback)
@@ -834,6 +839,7 @@ function Kavo.CreateLib(kavName, themeList)
             end 
 
                 function Elements:NewToggle(tname, nTip, callback)
+                    local TogFunction = {}
                     tname = tname or "Toggle"
                     nTip = nTip or "Prints Current Toggle State"
                     callback = callback or function() end
@@ -1044,6 +1050,25 @@ function Kavo.CreateLib(kavName, themeList)
                             viewDe = false
                         end
                     end)
+                    function TogFunction:UpdateToggle(newText, isTogOn)
+                        togName.Text = newText
+                        isTogOn = isTogOn or toggle
+                        if not isTogOn then return end
+                        if isTogOn then
+                            toggled = true
+                            game.TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
+                                ImageTransparency = 0
+                            }):Play()
+                            pcall(callback, toggled)
+                        else
+                            toggled = false
+                            game.TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
+                                ImageTransparency = 1
+                            }):Play()
+                            pcall(callback, toggled)
+                        end
+                    end
+                    return TogFunction
             end
 
             function Elements:NewSlider(slidInf, slidTip, maxvalue, minvalue, callback)
