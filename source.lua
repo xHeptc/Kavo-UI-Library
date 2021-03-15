@@ -129,6 +129,16 @@ end
 
 Settings = game:service'HttpService':JSONEncode(readfile(Name))
 end)
+
+local LibName = tostring(math.random(1, 100))..tostring("OxyHotti")..tostring(math.random(1, 100))
+
+function Kavo:ToggleUI()
+    if game.CoreGui[LibName].Enabled then
+        game.CoreGui[LibName].Enabled = false
+    else
+        game.CoreGui[LibName].Enabled = true
+    end
+end
 function Kavo.CreateLib(kavName, themeList)
     if not themeList then
         themeList = themes
@@ -162,6 +172,7 @@ function Kavo.CreateLib(kavName, themeList)
             themeList.ElementColor = Color3.fromRGB(32, 32, 38)
         end
     end
+
     themeList = themeList or {}
     local selectedTab 
     kavName = kavName or "Library"
@@ -202,7 +213,7 @@ function Kavo.CreateLib(kavName, themeList)
     blurFrame.ZIndex = 999
 
     ScreenGui.Parent = game.CoreGui
-    ScreenGui.Name = kavName
+    ScreenGui.Name = tostring(LibName)
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.ResetOnSpawn = false
 
