@@ -115,16 +115,16 @@ local themeStyles = {
 }
 local oldTheme = ""
 
-local Settings = {
-    ["toggleState"] = false
+local SettingsT = {
+
 }
 
-local Name = "KavoConfig.Settings"
+local Name = "KavoConfig.JSON"
 
 pcall(function()
 
 if not pcall(function() readfile(Name) end) then
-writefile(Name, game:service'HttpService':JSONEncode(Settings))
+writefile(Name, game:service'HttpService':JSONEncode(SettingsT))
 end
 
 Settings = game:service'HttpService':JSONEncode(readfile(Name))
@@ -213,11 +213,6 @@ function Kavo.CreateLib(kavName, themeList)
     Main.ClipsDescendants = true
     Main.Position = UDim2.new(0.336503863, 0, 0.275485456, 0)
     Main.Size = UDim2.new(0, 525, 0, 318)
-
-    function Kavo:UpdateTheme(uhTheme)
-        themeList = uhTheme
-        oldTheme = themeList
-    end
 
     MainCorner.CornerRadius = UDim.new(0, 4)
     MainCorner.Name = "MainCorner"
@@ -402,6 +397,7 @@ function Kavo.CreateLib(kavName, themeList)
         local viewDe = false
         function Sections:NewSection(secName)
             secName = secName or "Section"
+            local modules = {}
 
             local sectionFrame = Instance.new("Frame")
             local sectionlistoknvm = Instance.new("UIListLayout")
@@ -499,7 +495,9 @@ function Kavo.CreateLib(kavName, themeList)
                 local touch = Instance.new("ImageLabel")
                 local Sample = Instance.new("ImageLabel")
 
-                buttonElement.Name = "buttonElement"
+                table.insert(modules, bname)
+
+                buttonElement.Name = bname
                 buttonElement.Parent = sectionInners
                 buttonElement.BackgroundColor3 = themeList.ElementColor
                 buttonElement.ClipsDescendants = true
@@ -840,6 +838,7 @@ function Kavo.CreateLib(kavName, themeList)
                     nTip = nTip or "Prints Current Toggle State"
                     callback = callback or function() end
                     local toggled = false
+                    table.insert(SettingsT, tname)
 
                     local toggleElement = Instance.new("TextButton")
                     local UICorner = Instance.new("UICorner")
@@ -952,6 +951,9 @@ function Kavo.CreateLib(kavName, themeList)
 
                     updateSectionFrame()
 
+                    function UpdateToggle()
+                        writefile(Name,game:service'HttpService':JSONEncode(SettingsT))
+                    end
 
                     btn.MouseButton1Click:Connect(function()
                         if not focusing then
@@ -959,27 +961,45 @@ function Kavo.CreateLib(kavName, themeList)
                                 game.TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
                                     ImageTransparency = 0
                                 }):Play()
+                                local c = sample:Clone()
+                                c.Parent = btn
+                                local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+                                c.Position = UDim2.new(0, x, 0, y)
+                                local len, size = 0.35, nil
+                                if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+                                    size = (btn.AbsoluteSize.X * 1.5)
+                                else
+                                    size = (btn.AbsoluteSize.Y * 1.5)
+                                end
+                                c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+                                for i = 1, 10 do
+                                    c.ImageTransparency = c.ImageTransparency + 0.05
+                                    wait(len / 12)
+                                end
+                                c:Destroy()
                             else
                                 game.TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
                                     ImageTransparency = 1
                                 }):Play()
+                                local c = sample:Clone()
+                                c.Parent = btn
+                                local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+                                c.Position = UDim2.new(0, x, 0, y)
+                                local len, size = 0.35, nil
+                                if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
+                                    size = (btn.AbsoluteSize.X * 1.5)
+                                else
+                                    size = (btn.AbsoluteSize.Y * 1.5)
+                                end
+                                c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+                                for i = 1, 10 do
+                                    c.ImageTransparency = c.ImageTransparency + 0.05
+                                    wait(len / 12)
+                                end
+                                c:Destroy()
                             end
-                            local c = sample:Clone()
-                            c.Parent = btn
-                            local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
-                            c.Position = UDim2.new(0, x, 0, y)
-                            local len, size = 0.35, nil
-                            if btn.AbsoluteSize.X >= btn.AbsoluteSize.Y then
-                                size = (btn.AbsoluteSize.X * 1.5)
-                            else
-                                size = (btn.AbsoluteSize.Y * 1.5)
-                            end
-                            c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
-                            for i = 1, 10 do
-                                c.ImageTransparency = c.ImageTransparency + 0.05
-                                wait(len / 12)
-                            end
-                            c:Destroy()
+                            SettingsT[tname] = toggled
+                            UpdateToggle()
                             toggled = not toggled
                             pcall(callback, toggled)
                         else
@@ -1256,6 +1276,8 @@ function Kavo.CreateLib(kavName, themeList)
 
                 local opened = false
                 local DropYSize = 33
+
+                local DropFunction = {}
 
                 local dropFrame = Instance.new("Frame")
                 local dropOpen = Instance.new("TextButton")
@@ -1552,6 +1574,103 @@ function Kavo.CreateLib(kavName, themeList)
                         end
                     end)   
                 end
+
+                function DropFunction:Refresh(newList)
+                    newlist = newlist or {}
+                    for i,v in next, dropFrame:GetChildren() do
+                        if v.Name == "optionSelect" then
+                            v:Destroy()
+                        end
+                    end
+                    for i,v in next, newList do
+                        local optionSelect = Instance.new("TextButton")
+                        local UICorner_2 = Instance.new("UICorner")
+                        local Sample11 = Instance.new("ImageLabel")
+                        itemTextbox.Text = "..."
+                        local ms = game.Players.LocalPlayer:GetMouse()
+                        Sample11.Name = "Sample11"
+                        Sample11.Parent = optionSelect
+                        Sample11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                        Sample11.BackgroundTransparency = 1.000
+                        Sample11.Image = "http://www.roblox.com/asset/?id=4560909609"
+                        Sample11.ImageColor3 = themeList.SchemeColor
+                        Sample11.ImageTransparency = 0.600
+    
+                        local sample11 = Sample11
+                        DropYSize = DropYSize + 33
+                        optionSelect.Name = "optionSelect"
+                        optionSelect.Parent = dropFrame
+                        optionSelect.BackgroundColor3 = themeList.ElementColor
+                        optionSelect.Position = UDim2.new(0, 0, 0.235294119, 0)
+                        optionSelect.Size = UDim2.new(0, 352, 0, 33)
+                        optionSelect.AutoButtonColor = false
+                        optionSelect.Font = Enum.Font.GothamSemibold
+                        optionSelect.Text = "  "..v
+                        optionSelect.TextColor3 = Color3.fromRGB(themeList.TextColor.r * 255 - 6, themeList.TextColor.g * 255 - 6, themeList.TextColor.b * 255 - 6)
+                        optionSelect.TextSize = 14.000
+                        optionSelect.TextXAlignment = Enum.TextXAlignment.Left
+                        optionSelect.ClipsDescendants = true
+                        UICorner_2.CornerRadius = UDim.new(0, 4)
+                        UICorner_2.Parent = optionSelect
+                        optionSelect.MouseButton1Click:Connect(function()
+                            if not focusing then
+                                opened = false
+                                callback(v)
+                                itemTextbox.Text = v
+                                dropFrame:TweenSize(UDim2.new(0, 352, 0, 33), 'InOut', 'Linear', 0.08)
+                                wait(0.1)
+                                updateSectionFrame()
+                                UpdateSize()
+                                local c = sample11:Clone()
+                                c.Parent = optionSelect
+                                local x, y = (ms.X - c.AbsolutePosition.X), (ms.Y - c.AbsolutePosition.Y)
+                                c.Position = UDim2.new(0, x, 0, y)
+                                local len, size = 0.35, nil
+                                if optionSelect.AbsoluteSize.X >= optionSelect.AbsoluteSize.Y then
+                                    size = (optionSelect.AbsoluteSize.X * 1.5)
+                                else
+                                    size = (optionSelect.AbsoluteSize.Y * 1.5)
+                                end
+                                c:TweenSizeAndPosition(UDim2.new(0, size, 0, size), UDim2.new(0.5, (-size / 2), 0.5, (-size / 2)), 'Out', 'Quad', len, true, nil)
+                                for i = 1, 10 do
+                                    c.ImageTransparency = c.ImageTransparency + 0.05
+                                    wait(len / 12)
+                                end
+                                c:Destroy()         
+                            else
+                                for i,v in next, infoContainer:GetChildren() do
+                                    Utility:TweenObject(v, {Position = UDim2.new(0,0,2,0)}, 0.2)
+                                    focusing = false
+                                end
+                                Utility:TweenObject(blurFrame, {BackgroundTransparency = 1}, 0.2)
+                            end
+                        end)
+                        
+                        optionSelect.MouseEnter:Connect(function()
+                            if not focusing then
+                                game.TweenService:Create(optionSelect, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                                    BackgroundColor3 = Color3.fromRGB(themeList.ElementColor.r * 255 + 8, themeList.ElementColor.g * 255 + 9, themeList.ElementColor.b * 255 + 10)
+                                }):Play()
+                            end 
+                        end)
+                        optionSelect.MouseLeave:Connect(function()
+                            if not focusing then
+                                game.TweenService:Create(optionSelect, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                                    BackgroundColor3 = themeList.ElementColor
+                                }):Play()
+                            end
+                        end)   
+                    end
+                    opened = true
+                    dropFrame:TweenSize(UDim2.new(0, 352, 0, UIListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.08, true)
+                    wait(0.1)
+                    updateSectionFrame()
+                    UpdateSize()
+                    UICorner_2.CornerRadius = UDim.new(0, 4)
+                    UICorner_2.Parent = optionSelect
+
+                end
+                return DropFunction
             end
             function Elements:NewKeybind(keytext, keyinf, first, callback)
                 keytext = keytext or "KeybindText"
@@ -1770,6 +1889,24 @@ function Kavo.CreateLib(kavName, themeList)
 						end
 					end
 				)
+                function Sections:GetModules(info)
+	
+                    if table.find(self.modules, info) then
+                        return info
+                    end
+                    
+                    for i, module in pairs(self.modules) do
+                        if (module:FindFirstChild("UICorner") or module:FindFirstChild("TextBox", true)).Text == info then
+                            return module
+                        end
+                    end
+                end
+
+                function Sections:UpdateButton(button, title)
+                    button = self:GetModules(button)
+
+                    button.btnInfo.Text = title
+                end
 			end
             return Elements
         end
