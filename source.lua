@@ -130,7 +130,7 @@ end
 Settings = game:service'HttpService':JSONEncode(readfile(Name))
 end)
 
-local LibName = tostring(math.random(1, 100))..tostring(mat.random(1,50))..tostring(math.random(1, 100))
+local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
 
 function Kavo:ToggleUI()
     if game.CoreGui[LibName].Enabled then
@@ -139,6 +139,7 @@ function Kavo:ToggleUI()
         game.CoreGui[LibName].Enabled = true
     end
 end
+
 function Kavo.CreateLib(kavName, themeList)
     if not themeList then
         themeList = themes
@@ -2347,52 +2348,6 @@ function Kavo.CreateLib(kavName, themeList)
                 end)
                 setcolor({h,s,v})
             end
-
-            function Elements:ChangeTheme()
-				local ThemeNames = {}
-				for I,V in pairs(themeStyles) do
-					table.insert(ThemeNames, tostring(I))
-				end
-				Elements:NewDropdown(
-					"Themes",
-                    "Change your theme from now on!",
-					ThemeNames,
-					function(value)
-						themeList = themeStyles[value]
-						for I,V in pairs(Objects) do
-							if type(V) == "string" then
-								I[V] = themeList.ElementColor
-                                I[V] = themeList.TextColor
-                                I[V] = themeList.SchemeColor
-                                I[V] = themeList.Header
-							elseif V then
-								I.ElementColor = themeList.ElementColor
-                                I.TextColor = themeList.TextColor
-                                I.SchemeColor = themeList.SchemeColor
-                                I.Header = themeList.Header
-							end
-						end
-					end
-				)
-                function Sections:GetModules(info)
-	
-                    if table.find(self.modules, info) then
-                        return info
-                    end
-                    
-                    for i, module in pairs(self.modules) do
-                        if (module:FindFirstChild("UICorner") or module:FindFirstChild("TextBox", true)).Text == info then
-                            return module
-                        end
-                    end
-                end
-
-                function Sections:UpdateButton(button, title)
-                    button = self:GetModules(button)
-
-                    button.btnInfo.Text = title
-                end
-			end
             return Elements
         end
         return Sections
