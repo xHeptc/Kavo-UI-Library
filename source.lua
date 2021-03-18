@@ -537,7 +537,7 @@ function Kavo.CreateLib(kavName, themeList)
 
             local Elements = {}
 
-            function Elements:NewButton(bname,tipINf,showLogo, callback)
+            function Elements:NewButton(bname,tipINf, callback)
                 showLogo = showLogo or true
                 local ButtonFunction = {}
                 tipINf = tipINf or "Tip: Clicking this nothing will happen!"
@@ -728,11 +728,6 @@ function Kavo.CreateLib(kavName, themeList)
                         btnInfo.TextColor3 = themeList.TextColor
                     end
                 end)()
-                if not showLogo then
-                    touch.Visible = false
-                    btnInfo.Size = UDim2.new(0, 315,0, 14)
-                    btnInfo.Position = UDim2.new(0.02, 0,0.273, 0)
-                end
                 
                 function ButtonFunction:UpdateButton(newTitle)
                     btnInfo.Text = newTitle
