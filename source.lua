@@ -2493,6 +2493,8 @@ function Kavo.CreateLib(kavName, themeList)
                     cursor2.Position = UDim2.new(0.5,0,color[3]-1,-cy)
                     local realcolor = Color3.fromHSV(color[1],color[2],color[3])
                     colorCurrent.BackgroundColor3 = realcolor
+                    callback(realcolor)
+
                 end
                 local function setrgbcolor(tbl)
                     local cx = cursor.AbsoluteSize.X/2
