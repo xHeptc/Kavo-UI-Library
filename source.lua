@@ -2446,7 +2446,7 @@ function Kavo.CreateLib(kavName, themeList)
                 --
                 local function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
                 counter = 0
-                function mouseLocation()
+                local function mouseLocation()
                     return plr:GetMouse()
                 end
                 local function cp()
