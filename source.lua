@@ -348,6 +348,8 @@ function Kavo.CreateLib(kavName, themeList)
     end
     local Tabs = {}
 
+    local first = true
+
     function Tabs:NewTab(tabName)
         tabName = tabName or "Tab"
         local tabButton = Instance.new("TextButton")
@@ -391,6 +393,16 @@ function Kavo.CreateLib(kavName, themeList)
         Objects[tabButton] = "TextColor3"
         tabButton.TextSize = 14.000
         tabButton.BackgroundTransparency = 1
+
+        if first then
+            page.Visible = true
+            tabButton.BackgroundTransparency = 0
+            first = false
+            UpdateSize()
+        else
+            page.Visible = false
+            tabButton.BackgroundTransparency = 1
+        end
 
         UICorner.CornerRadius = UDim.new(0, 5)
         UICorner.Parent = tabButton
@@ -2068,6 +2080,10 @@ function Kavo.CreateLib(kavName, themeList)
                 end)()
             end
 
+            function Elements:NewSelection(selText, selInf, list, callback)
+
+            end
+
             function Elements:NewColorPicker(colText, colInf, defcolor, callback)
                 colText = colText or "ColorPicker"
                 callback = callback or function() end
@@ -2491,7 +2507,6 @@ function Kavo.CreateLib(kavName, themeList)
                     cursor2.Position = UDim2.new(0.5,0,color[3]-1,-cy)
                     local realcolor = Color3.fromHSV(color[1],color[2],color[3])
                     colorCurrent.BackgroundColor3 = realcolor
-
                 end
                 local function setrgbcolor(tbl)
                     local cx = cursor.AbsoluteSize.X/2
