@@ -2080,10 +2080,6 @@ function Kavo.CreateLib(kavName, themeList)
                 end)()
             end
 
-            function Elements:NewSelection(selText, selInf, list, callback)
-
-            end
-
             function Elements:NewColorPicker(colText, colInf, defcolor, callback)
                 colText = colText or "ColorPicker"
                 callback = callback or function() end
