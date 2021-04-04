@@ -1057,7 +1057,8 @@ function Kavo.CreateLib(kavName, themeList)
                     local img = toggleEnabled
                     local infBtn = viewInfo
 
-                    updateSectionFrame()
+                                    updateSectionFrame()
+                UpdateSize()
 
                     btn.MouseButton1Click:Connect(function()
                         if not focusing then
@@ -1321,7 +1322,8 @@ function Kavo.CreateLib(kavName, themeList)
                 end 
 
 
-                updateSectionFrame()
+                                updateSectionFrame()
+                UpdateSize()
                 local mouse = game:GetService("Players").LocalPlayer:GetMouse();
 
                 local ms = game.Players.LocalPlayer:GetMouse()
@@ -1829,7 +1831,8 @@ function Kavo.CreateLib(kavName, themeList)
                                 Utility:TweenObject(blurFrame, {BackgroundTransparency = 1}, 0.2)
                             end
                         end)
-                        
+                                        updateSectionFrame()
+                UpdateSize()
                         local hov = false
                         optionSelect.MouseEnter:Connect(function()
                             if not focusing then
@@ -2008,6 +2011,7 @@ function Kavo.CreateLib(kavName, themeList)
                     end
                 end)  
                                 updateSectionFrame()
+                UpdateSize()
                 local oHover = false
                 keybindElement.MouseEnter:Connect(function()
                     if not focusing then
