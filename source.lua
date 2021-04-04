@@ -2007,6 +2007,7 @@ function Kavo.CreateLib(kavName, themeList)
                         viewDe = false
                     end
                 end)  
+                                updateSectionFrame()
                 local oHover = false
                 keybindElement.MouseEnter:Connect(function()
                     if not focusing then
