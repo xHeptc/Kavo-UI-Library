@@ -1,5 +1,5 @@
 local Kavo = {}
---fixed
+
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 local input = game:GetService("UserInputService")
@@ -332,11 +332,6 @@ function Kavo.CreateLib(kavName, themeList)
             coverup.BackgroundColor3 = themeList.Header
         end
     end)()
-
-    return setmetatable({
-        themeStyles = {}
-    }, Kavo)
-end
 
     function Kavo:ChangeColor(prope,color)
         if prope == "Background" then
@@ -1062,7 +1057,8 @@ end
                     local img = toggleEnabled
                     local infBtn = viewInfo
 
-                    updateSectionFrame()
+                                    updateSectionFrame()
+                UpdateSize()
 
                     btn.MouseButton1Click:Connect(function()
                         if not focusing then
@@ -1326,7 +1322,8 @@ end
                 end 
 
 
-                updateSectionFrame()
+                                updateSectionFrame()
+                UpdateSize()
                 local mouse = game:GetService("Players").LocalPlayer:GetMouse();
 
                 local ms = game.Players.LocalPlayer:GetMouse()
@@ -1834,7 +1831,8 @@ end
                                 Utility:TweenObject(blurFrame, {BackgroundTransparency = 1}, 0.2)
                             end
                         end)
-                        
+                                        updateSectionFrame()
+                UpdateSize()
                         local hov = false
                         optionSelect.MouseEnter:Connect(function()
                             if not focusing then
@@ -2012,6 +2010,8 @@ end
                         viewDe = false
                     end
                 end)  
+                                updateSectionFrame()
+                UpdateSize()
                 local oHover = false
                 keybindElement.MouseEnter:Connect(function()
                     if not focusing then
@@ -2083,10 +2083,6 @@ end
 
                     end
                 end)()
-            end
-
-            function Elements:NewSelection(selText, selInf, list, callback)
-
             end
 
             function Elements:NewColorPicker(colText, colInf, defcolor, callback)
