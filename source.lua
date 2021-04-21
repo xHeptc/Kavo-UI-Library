@@ -462,6 +462,7 @@ function Kavo.CreateLib(kavName, themeList)
         function Sections:NewSection(secName)
             secName = secName or "Section"
             local modules = {}
+            local sectionFunctions = {}
 
             local sectionFrame = Instance.new("Frame")
             local sectionlistoknvm = Instance.new("UIListLayout")
@@ -554,6 +555,11 @@ function Kavo.CreateLib(kavName, themeList)
                 local frameSc = sectionlistoknvm.AbsoluteContentSize
                 sectionFrame.Size = UDim2.new(0, 352, 0, frameSc.Y)
             end
+                        
+             function sectionFunctions:UpdateSection(newTitle)
+                 sectionName.Text = newTitle
+             end
+                return sectionFunctions
             updateSectionFrame()
 
             local Elements = {}
