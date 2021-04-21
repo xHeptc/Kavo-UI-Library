@@ -526,7 +526,7 @@ function Kavo.CreateLib(kavName, themeList)
             if themeList.SchemeColor == Color3.fromRGB(0,0,0) then
                 Utility:TweenObject(sectionName, {TextColor3 = Color3.fromRGB(255,255,255)}, 0.2)
             end 
-
+               
             sectionInners.Name = "sectionInners"
             sectionInners.Parent = sectionFrame
             sectionInners.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -555,15 +555,12 @@ function Kavo.CreateLib(kavName, themeList)
                 local frameSc = sectionlistoknvm.AbsoluteContentSize
                 sectionFrame.Size = UDim2.new(0, 352, 0, frameSc.Y)
             end
-                        
-             function sectionFunctions:UpdateSection(newTitle)
-                 sectionName.Text = newTitle
-             end
-                return sectionFunctions
-            updateSectionFrame()
+                updateSectionFrame()
+                function sectionFunctions:UpdateSection(seTitle)
+                     sectionName.Text = seTitle       
+                end
 
             local Elements = {}
-
             function Elements:NewButton(bname,tipINf, callback)
                 showLogo = showLogo or true
                 local ButtonFunction = {}
