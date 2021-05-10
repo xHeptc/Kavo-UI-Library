@@ -187,7 +187,7 @@ function Kavo.CreateLib(kavName, themeList)
     local selectedTab 
     kavName = kavName or "Library"
     table.insert(Kavo, kavName)
-    for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
+    for i,v in pairs(game.CoreGui:GetChildren()) do
         if v:IsA("ScreenGui") and v.Name == kavName then
             v:Destroy()
         end
@@ -404,9 +404,9 @@ function Kavo.CreateLib(kavName, themeList)
         tabButton.BackgroundTransparency = 1
 
         if first then
+            first = false
             page.Visible = true
             tabButton.BackgroundTransparency = 0
-            first = false
             UpdateSize()
         else
             page.Visible = false
