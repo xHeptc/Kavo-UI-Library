@@ -669,6 +669,7 @@ function Kavo.CreateLib(kavName, themeList)
                 end 
 
                 updateSectionFrame()
+                                UpdateSize()
 
                 local ms = game.Players.LocalPlayer:GetMouse()
 
@@ -866,6 +867,7 @@ function Kavo.CreateLib(kavName, themeList)
 
 
                 updateSectionFrame()
+                                UpdateSize()
             
                 local btn = textboxElement
                 local infBtn = viewInfo
