@@ -1868,7 +1868,7 @@ function Kavo.CreateLib(kavName, themeList)
                                     optionSelect.BackgroundColor3 = themeList.ElementColor
                                 end
                                 optionSelect.TextColor3 = Color3.fromRGB(themeList.TextColor.r * 255 - 6, themeList.TextColor.g * 255 - 6, themeList.TextColor.b * 255 - 6)
-                                Sample1.ImageColor3 = themeList.SchemeColor
+                                Sample11.ImageColor3 = themeList.SchemeColor
                             end
                         end)()
                     end
