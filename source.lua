@@ -1180,9 +1180,10 @@ function Kavo.CreateLib(kavName, themeList)
                         end
                     end)
                     function TogFunction:UpdateToggle(newText, isTogOn)
-                        togName.Text = newText
                         isTogOn = isTogOn or toggle
-                        if newText == nil then return end
+                        if newText ~= nil then 
+                            togName.Text = newText
+                        end
                         if isTogOn then
                             toggled = true
                             game.TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
