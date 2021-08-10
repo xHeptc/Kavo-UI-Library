@@ -459,11 +459,11 @@ function Kavo.CreateLib(kavName, themeList)
             end
         end)()
     
-        function Sections:NewSection(secName)
+        function Sections:NewSection(secName, hidden)
             secName = secName or "Section"
             local sectionFunctions = {}
             local modules = {}
-
+	    hidden = hidden or false
             local sectionFrame = Instance.new("Frame")
             local sectionlistoknvm = Instance.new("UIListLayout")
             local sectionHead = Instance.new("Frame")
@@ -471,6 +471,12 @@ function Kavo.CreateLib(kavName, themeList)
             local sectionName = Instance.new("TextLabel")
             local sectionInners = Instance.new("Frame")
             local sectionElListing = Instance.new("UIListLayout")
+			
+	    if hidden then
+		sectionHead.Visible = true
+	    else
+		sectionHead.Visible = false
+	    end
 
             sectionFrame.Name = "sectionFrame"
             sectionFrame.Parent = page
