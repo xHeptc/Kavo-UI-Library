@@ -473,9 +473,9 @@ function Kavo.CreateLib(kavName, themeList)
             local sectionElListing = Instance.new("UIListLayout")
 			
 	    if hidden then
-		sectionHead.Visible = true
-	    else
 		sectionHead.Visible = false
+	    else
+		sectionHead.Visible = true
 	    end
 
             sectionFrame.Name = "sectionFrame"
