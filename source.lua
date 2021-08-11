@@ -2575,6 +2575,7 @@ function Kavo.CreateLib(kavName, themeList)
             	label.Parent = sectionInners
             	label.BackgroundColor3 = themeList.SchemeColor
             	label.BorderSizePixel = 0
+				label.ClipsDescendants = true
             	label.Text = title
            		label.Size = UDim2.new(0, 352, 0, 33)
 	            label.Font = Enum.Font.Gotham
