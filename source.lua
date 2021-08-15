@@ -628,6 +628,7 @@ function Kavo.CreateLib(kavName, themeList)
                 moreInfo.ZIndex = 9
                 moreInfo.Font = Enum.Font.GothamSemibold
                 moreInfo.Text = "  "..tipINf
+                moreInfo.RichText = true
                 moreInfo.TextColor3 = themeList.TextColor
                 Objects[moreInfo] = "TextColor3"
                 moreInfo.TextSize = 14.000
@@ -855,6 +856,7 @@ function Kavo.CreateLib(kavName, themeList)
                 moreInfo.Size = UDim2.new(0, 353, 0, 33)
                 moreInfo.ZIndex = 9
                 moreInfo.Font = Enum.Font.GothamSemibold
+                moreInfo.RichText = true
                 moreInfo.Text = "  "..tTip
                 moreInfo.TextColor3 = Color3.fromRGB(255, 255, 255)
                 moreInfo.TextSize = 14.000
@@ -1055,6 +1057,7 @@ function Kavo.CreateLib(kavName, themeList)
                     moreInfo.Size = UDim2.new(0, 353, 0, 33)
                     moreInfo.ZIndex = 9
                     moreInfo.Font = Enum.Font.GothamSemibold
+                    moreInfo.RichText = true
                     moreInfo.Text = "  "..nTip
                     moreInfo.TextColor3 = themeList.TextColor
                     moreInfo.TextSize = 14.000
@@ -1331,6 +1334,7 @@ function Kavo.CreateLib(kavName, themeList)
                 moreInfo.Text = "  "..slidTip
                 moreInfo.TextColor3 = themeList.TextColor
                 moreInfo.TextSize = 14.000
+                moreInfo.RichText = true
                 moreInfo.TextXAlignment = Enum.TextXAlignment.Left
 
                 UICorner.CornerRadius = UDim.new(0, 4)
@@ -1624,6 +1628,7 @@ function Kavo.CreateLib(kavName, themeList)
                 moreInfo.Position = UDim2.new(0, 0, 2, 0)
                 moreInfo.Size = UDim2.new(0, 353, 0, 33)
                 moreInfo.ZIndex = 9
+                moreInfo.RichText = true
                 moreInfo.Font = Enum.Font.GothamSemibold
                 moreInfo.Text = "  "..dropinf
                 moreInfo.TextColor3 = themeList.TextColor
@@ -1975,6 +1980,7 @@ function Kavo.CreateLib(kavName, themeList)
                 moreInfo.Position = UDim2.new(0, 0, 2, 0)
                 moreInfo.Size = UDim2.new(0, 353, 0, 33)
                 moreInfo.ZIndex = 9
+                moreInfo.RichText = true
                 moreInfo.Font = Enum.Font.GothamSemibold
                 moreInfo.Text = "  "..keyinf
                 moreInfo.TextColor3 = themeList.TextColor
@@ -2269,6 +2275,7 @@ function Kavo.CreateLib(kavName, themeList)
                 moreInfo.Text = "  "..colInf
                 moreInfo.TextColor3 = themeList.TextColor
                 moreInfo.TextSize = 14.000
+                moreInfo.RichText = true
                 moreInfo.TextXAlignment = Enum.TextXAlignment.Left
 
                 UICorner.CornerRadius = UDim.new(0, 4)
