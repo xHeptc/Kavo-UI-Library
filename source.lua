@@ -263,6 +263,7 @@ function Kavo.CreateLib(kavName, themeList)
     title.Position = UDim2.new(0.0171428565, 0, 0.344827592, 0)
     title.Size = UDim2.new(0, 204, 0, 8)
     title.Font = Enum.Font.Gotham
+    title.RichText = true
     title.Text = kavName
     title.TextColor3 = Color3.fromRGB(245, 245, 245)
     title.TextSize = 16.000
@@ -520,6 +521,7 @@ function Kavo.CreateLib(kavName, themeList)
             sectionName.Size = UDim2.new(0.980113626, 0, 1, 0)
             sectionName.Font = Enum.Font.Gotham
             sectionName.Text = secName
+            sectionName.RichText = true
             sectionName.TextColor3 = themeList.TextColor
             Objects[sectionName] = "TextColor3"
             sectionName.TextSize = 14.000
@@ -657,6 +659,7 @@ function Kavo.CreateLib(kavName, themeList)
                 btnInfo.Size = UDim2.new(0, 314, 0, 14)
                 btnInfo.Font = Enum.Font.GothamSemibold
                 btnInfo.Text = bname
+                btnInfo.RichText = true
                 btnInfo.TextColor3 = themeList.TextColor
                 Objects[btnInfo] = "TextColor3"
                 btnInfo.TextSize = 14.000
@@ -837,6 +840,7 @@ function Kavo.CreateLib(kavName, themeList)
                 togName.Size = UDim2.new(0, 138, 0, 14)
                 togName.Font = Enum.Font.GothamSemibold
                 togName.Text = tname
+                togName.RichText = true
                 togName.TextColor3 = themeList.TextColor
                 togName.TextSize = 14.000
                 togName.TextXAlignment = Enum.TextXAlignment.Left
@@ -1016,6 +1020,7 @@ function Kavo.CreateLib(kavName, themeList)
                     togName.Size = UDim2.new(0, 288, 0, 14)
                     togName.Font = Enum.Font.GothamSemibold
                     togName.Text = tname
+                    togName.RichText = true
                     togName.TextColor3 = themeList.TextColor
                     togName.TextSize = 14.000
                     togName.TextXAlignment = Enum.TextXAlignment.Left
@@ -1244,6 +1249,7 @@ function Kavo.CreateLib(kavName, themeList)
                 togName.Size = UDim2.new(0, 138, 0, 14)
                 togName.Font = Enum.Font.GothamSemibold
                 togName.Text = slidInf
+                togName.RichText = true
                 togName.TextColor3 = themeList.TextColor
                 togName.TextSize = 14.000
                 togName.TextXAlignment = Enum.TextXAlignment.Left
@@ -1568,6 +1574,7 @@ function Kavo.CreateLib(kavName, themeList)
                 itemTextbox.Size = UDim2.new(0, 138, 0, 14)
                 itemTextbox.Font = Enum.Font.GothamSemibold
                 itemTextbox.Text = dropname
+                itemTextbox.RichText = true
                 itemTextbox.TextColor3 = themeList.TextColor
                 itemTextbox.TextSize = 14.000
                 itemTextbox.TextXAlignment = Enum.TextXAlignment.Left
@@ -1991,6 +1998,7 @@ function Kavo.CreateLib(kavName, themeList)
                 togName.Size = UDim2.new(0, 222, 0, 14)
                 togName.Font = Enum.Font.GothamSemibold
                 togName.Text = keytext
+                togName.RichText = true
                 togName.TextColor3 = themeList.TextColor
                 togName.TextSize = 14.000
                 togName.TextXAlignment = Enum.TextXAlignment.Left
@@ -2245,6 +2253,7 @@ function Kavo.CreateLib(kavName, themeList)
                 togName.Text = colText
                 togName.TextColor3 = themeList.TextColor
                 togName.TextSize = 14.000
+                togName.RichText = true
                 togName.TextXAlignment = Enum.TextXAlignment.Left
 
                 local moreInfo = Instance.new("TextLabel")
@@ -2580,6 +2589,7 @@ function Kavo.CreateLib(kavName, themeList)
            		label.Size = UDim2.new(0, 352, 0, 33)
 	            label.Font = Enum.Font.Gotham
 	            label.Text = "  "..title
+	            label.RichText = true
 	            label.TextColor3 = themeList.TextColor
 	            Objects[label] = "TextColor3"
 	            label.TextSize = 14.000
