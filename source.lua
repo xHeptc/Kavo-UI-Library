@@ -1739,7 +1739,7 @@ function Kavo.CreateLib(kavName, themeList)
                             opened = false
                             callback(v)
                             itemTextbox.Text = v
-                            dropFrame:TweenSize(UDim2.new(0, 352, 0, 33), 'InOut', 'Linear', 0.08)
+                            --dropFrame:TweenSize(UDim2.new(0, 352, 0, 33), 'InOut', 'Linear', 0.08)
                             wait(0.1)
                             updateSectionFrame()
                             UpdateSize()
