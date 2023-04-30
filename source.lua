@@ -23,7 +23,7 @@ function Kavo:DraggingEnabled(frame, parent)
             
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
-                    dragging = false
+                    dragging = true
                 end
             end)
         end
